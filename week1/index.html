@@ -1,18 +1,55 @@
 <!doctype html>
 <html>
-
 <head>
-  <title>Week One Notes</title>
-  <script>
+<title>Story Writer</title>
+<script>
+function loadStory(){
+var storyName = document.getElementById("name_input").value
+var storyHTML = localStorage.getItem(storyName) //store what's in the storyHTML var (box)
+//and label that stored piece of info w/ what you find in the storyName var
 
-  </script>
+////Where does it store it???? How is the user able to find it again???
+document.getElementById("story_editor").value = storyHTML
 
-  <style>
-  </style>
+}
+
+function saveStory(){//function starts 
+//get element ID, take what's inside, store in variable
+var storyName = document.getElementById("name_input").value
+//get element ID, take what's inside, store in variable
+var storyHTML = document.getElementById("story_editor").value
+localStorage.setItem(storyName, storyHTML)
+}//function ends 
+
+function displayStory(){
+var storyHTML = document.getElementById("story_editor").value//"Hey Document, go get the 
+//element whose ID is "story_editor" Take what you find inside it, its value, and store
+// what you find in a variable box
+document.getElementById("story_display").innerHTML = storyHTML //"Hey Document, go get the
+//element whose ID is "story_display" and put what you find in the storyHTML variable b/w 
+//the story_display starting and ending tags 
+}
+</script>
+
+<style>
+textarea{
+width:800px;
+height: 250px;
+background-color: lightyellow;
+}
+</style>
 </head>
 
 <body>
-  <p>Hello</p>
+<h1>Story Editor</h1>
+Story Name:<input id="name_input"></input>
+<section>
+<button onclick="loadStory()">Find and Edit It</button>
+<button onclick="saveStory()">Save It</button>
+<button onclick="displayStory()">Display It</button>
+</section>
+<textarea id="story_editor" placeholder="Write a totally awesome story
+here."></textarea>
+<section id="story_display"></section>
 </body>
-
 </html>
